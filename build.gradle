@@ -1,0 +1,30 @@
+buildscript {
+    repositories {
+        maven{ url "http://prebuild-repositories.htc.com.tw:8081/artifactory/HICRelease"}
+        jcenter()
+    }
+    dependencies {
+        classpath "com.htc.smali.build:gradle:1.0.0.+"
+    }
+}
+
+apply plugin: "com.htc.smali.partial.build"
+
+workinginfo  {
+    filelistZips "685622-001_M8UL_Generic_WWE_M60_Mainline_Sense70_Stable_MR-FileList.tar.gz";
+    dependLibraries = ["framework", "ext", "core-libart", "telephony-common"];
+    selfLibraries = "SystemUI";
+    input "SystemUI.apk";
+    output "SystemUI.apk";
+    androidSDK "${System.env.HOME}/hudson_tools/AndroidSDK";
+}
+
+
+workinginfo  {
+filelistZips "FileList.tar.gz";
+dependLibraries = ["framework", "ext", "core-libart", "telephony-common"];
+selfLibraries = "SystemUI";
+input "SystemUI.apk";
+output "SystemUI.apk";
+androidSDK "${System.env.HOME}/hudson_tools/AndroidSDK";
+}
